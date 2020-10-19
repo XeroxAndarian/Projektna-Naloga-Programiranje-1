@@ -4,8 +4,9 @@ Repository za projektno nalogog iz predmeta programiranje 1
 Animeji
 ==================
 
-Analiziral bom celotno zbirko animejev na MyAnimeList* (cca 12000 serij, filmov itd.)
-[MyAnimeList]: https://myanimelist.net/
+Analiziral bom celotno zbirko animejev na MyAnimeList (cca 12000 serij, filmov itd.)
+
+[MyAnimeList](https://myanimelist.net/)
 
 Za vsak anime bom zajel:
 - naslov (ENG & JAP)
