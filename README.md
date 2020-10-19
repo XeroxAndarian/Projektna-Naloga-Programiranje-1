@@ -15,7 +15,7 @@ Za vsak anime bom zajel:
 - Studio
 - Vir (Manga, Original, LN, VN, ...)
 - Žanri
-- Rating (v smislu priporočljive starosti gledalca)
+- Rating 
 - Ocena
 
 
