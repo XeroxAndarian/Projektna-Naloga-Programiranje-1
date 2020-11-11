@@ -31,6 +31,22 @@ opomba: Če ima anime (predvsem serije) več sezon, se vsaka upošteva posebej
 opomba 2: Modra bom tekom projekta dodal kakšno vprašanje, ali pa katero od teh razširil / spremenil.
 _____________________________________________________________________________________________
 
+##Podatki
+
+Podatki so shranjeni v dveh datotekah: 
+anime.csv - podatki o posameznem aimeju:
+- id (dolocen s strani spletne strani)
+- naslov (Ang, ce ne obstaja, potem Jap ampak v Romanji obliki (taki, da jo znamo anglesko govoreci ljudje prebrati))
+- studio
+- vir
+- rating
+- status
+- ocena
+- leto izzida
+- zacetek (in konec) predvajanja
+
+zanri.csv - zanri, ki pripada dolocenemu animeju z id
+
 Edit: Verjetno bom še povečal vzorec (max id 15000 ---> 40800)
 
 Opomba: shranjenih je le prvih nekaj html datotek, saj jih je vse skupaj okrog 6000 (za časa 11.11.2020; predvideno jih bo še več, samo da jih "nakopljem")
