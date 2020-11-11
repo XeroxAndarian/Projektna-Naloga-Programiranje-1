@@ -45,6 +45,8 @@ anime.csv - podatki o posameznem aimeju:
 - leto izzida
 - zacetek (in konec) predvajanja
 
+zaporedje: name,id,episodes,aired,studio,source,rating,score,leto,status,season
+
 zanri.csv - zanri, ki pripada dolocenemu animeju z id
 
 Edit: Verjetno bom še povečal vzorec (max id 15000 ---> 40800)
