@@ -41,6 +41,7 @@ C =    15000           # skupno stevilo zeljenih strani
 Error_404 = []
 
 def clock_work(prejsni_konec, stevilo_strani, cycle_count):
+    '''Zazene celotno operacijo downloadanja, pri tem opisuje napredek in med prenasanjem pazi na pavze, da se izmuzne varnostnemu sistemu spletne strani, ki zeli preverjati ali je uporabnik clovek. '''
     print("Starting in 90s. Settings: Start at ID: {}, number of cycles: {}, downloads per cycle: {}".format(prejsni_konec, cycle_count, stevilo_strani))
     time.sleep(30)
     print("Estimated time untill the end of all cycles .... approx. {}s  = approx. {} at {}".format(cycle_count * 333 + 60, time.strftime("%H:%M:%S", time.gmtime(cycle_count * 333 + 60)), datetime.datetime.now() + datetime.timedelta(seconds = cycle_count * 333 + 60))) 
