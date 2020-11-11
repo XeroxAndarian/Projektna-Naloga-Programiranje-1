@@ -5,6 +5,11 @@ import requests
 import sys
 import re
 import orodja
+import time
+import random
+import datetime
+import math
+
 
 
 # URL glavne strani 
@@ -23,15 +28,76 @@ anime_json = 'Anime.json'
 csv_filename = 'anime.csv'
 
 #stevilo idjev, ki jih bomo preverili
-st_strani = 10
+prejsni_konec_nah = 750 # "useless"
+st_strani_nah = 200 # "useless"
+
+
+# ------------------------------------------------------------------------------------------------------------------------------
+
+A =    4700          # prejsni_konec
+B =    100            # stevilo strani na interval
+C =    15000           # skupno stevilo zeljenih strani
 
 Error_404 = []
 
-def download_anime_page_id(st_strani):
+def clock_work(prejsni_konec, stevilo_strani, cycle_count):
+    print("Starting in 90s. Settings: Start at ID: {}, number of cycles: {}, downloads per cycle: {}".format(prejsni_konec, cycle_count, stevilo_strani))
+    time.sleep(30)
+    print("Estimated time untill the end of all cycles .... approx. {}s  = approx. {} at {}".format(cycle_count * 333 + 60, time.strftime("%H:%M:%S", time.gmtime(cycle_count * 333 + 60)), datetime.datetime.now() + datetime.timedelta(seconds = cycle_count * 333 + 60))) 
+    time.sleep(30)
+    print("Starting cylcle 1/{} in 30s. Starting at ID: {}, downloading {} per cycle.".format(cycle_count, prejsni_konec, stevilo_strani))
+    time.sleep(20)
+    print(f"Starting cylcle 1/{cycle_count} in 10s.")
+    time.sleep(5)
+    print("Firs cycle begins in 5s...")
+    time.sleep(1)
+    print("4...")
+    time.sleep(1)
+    print("3...")
+    time.sleep(1)
+    print("2...")
+    time.sleep(1)
+    print("1...")
+    time.sleep(1)
+    print("First cycle begins! Estimated finish time: {}".format(datetime.datetime.now() + datetime.timedelta(seconds = cycle_count * 333 + 60)))
+    novi_konec = prejsni_konec
+    for i in range(cycle_count):
+        interval = random.randint(300, 360)
+        download_anime_and_filter_404(stevilo_strani, novi_konec)
+        novi_konec += stevilo_strani
+        i += 1
+        if i < cycle_count:
+            print("Finished cycle [{}/{}] at {}....    Taking a break for {}s...".format(i, cycle_count , datetime.datetime.now(), interval))
+            print("Time untill the end of all cycles .... approx. {}s    =   approx. {}.".format((cycle_count - i) * random.randint(300, 360), time.strftime("%H:%M:%S", time.gmtime((cycle_count - i) * random.randint(300, 360)))))
+            time.sleep(interval - 60)
+            print("Next cycle begins in 60s...")
+            time.sleep(30)
+            print("Next cycle begins in 30s...")
+            time.sleep(20)
+            print("Next cycle begins in 10s...")
+            time.sleep(5)
+            print("Next cycle begins in 5s...")
+            time.sleep(1)
+            print("4...")
+            time.sleep(1)
+            print("3...")
+            time.sleep(1)
+            print("2...")
+            time.sleep(1)
+            print("1...")
+            time.sleep(1)
+            print("Next cycle begins!")
+        else:
+            print("All cycles completed at {}! {} files downloaded! Last ID: {}  ^_^ ".format(datetime.datetime.now() , stevilo_strani * cycle_count, novi_konec))
+    return None
+
+
+
+def download_anime_page_id(st_strani, zacetek):
     '''Shrani anime, ki je v bazi spletne strani pod id'''
     for i in range(st_strani):
-        url = ('https://myanimelist.net/anime/{}'.format(i))
-        ime_datoteke = 'Anime-id{}.html'.format(i)
+        url = ('https://myanimelist.net/anime/{}'.format(zacetek + i))
+        ime_datoteke = 'Anime-id{}.html'.format(zacetek + i)
         path = os.path.join(anime_directory, ime_datoteke)
         orodja.shrani_spletno_stran(url, path)
         #vsebina = orodja.vsebina_datoteke(ime_datoteke)
@@ -41,71 +107,30 @@ def download_anime_page_id(st_strani):
 
 
 
-def filter_404(st_strani):
+def filter_404(st_strani, zacetek):
     '''Nekatere id-ji so "prazni" in v tem primeru nm spletna stran vrne napako 404. Ker ne želimo imeti te datoteke shranjene, bomo vse tipe takih datotek odstranili.'''
     
     for i in range(st_strani):
-        ime_datoteke = 'Anime-id{}.html'.format(i)
+        ime_datoteke = 'Anime-id{}.html'.format(zacetek + i)
         path = os.path.join(anime_directory, ime_datoteke)
         with open(path, encoding='utf-8') as dat:
             if '404 Not Found' in dat.read():
-                print("Error Found in File {}. Unwanted file removed".format(ime_datoteke))
+                print("Error 404 Found in File {}. ---------->  File removed.".format(ime_datoteke))
                 dat.close()
                 os.remove(path)
                 Error_404.append(i)
     return None
 
 
-def download_anime_and_filter_404(st_strani):
+def download_anime_and_filter_404(st_strani, zacetek):
     '''Downloada vse strani od 1 do zeljenega stevila strani in izbrise vse datoteke, ki so "prazne" oz. so datoteke strani, katerih id se nima dolocenega svojega animeja.'''
-    download_anime_page_id(st_strani + 1)
-    filter_404(st_strani + 1)
+    download_anime_page_id(st_strani + 1, zacetek)
+    filter_404(st_strani + 1, zacetek)
     return 
 
-download_anime_and_filter_404(st_strani)
-
-print(f"Error_404 = {Error_404}" )
-Animeji = []
+D = math.ceil(float((C - A) / B))
 
 
-vzorec_bloka = re.compile(
-        r'<h2>Alternative Titles</h2>'
-        r'(.*?)<div class="clearfix mauto mt16" style="width:160px;padding-right:10px">',
-        re.DOTALL
-)
+# clock_work(A, B, D)
 
-test_vzorec = re.compile(r'>English:</span>'r'.*?'r'<')
-
-vzorec_anime = re.compile(
-        r'.*'
-        r'>English:</span>(?P<name>.*?)<.*?' #name
-        r'">Episodes:</span>(?P<episodes>.*?)<.*?' #episodes count 
-        r'">Aired:</span>(?P<aired>.*?)<.*?' #airing from to 
-        r'>Studios:</span>.*title="(?P<studio>.*?)".*?' #studio 
-        r'">Source:</span>(?P<source>.*?)<.*?' #source 
-        # genre
-        r'">Rating:</span>(?P<rating>.*?)<.*?' #rating
-        r'">Score:</span>.*>(?P<score>.*?)<.*?' #score
-)
-seznam_id = range(st_strani)
-seznam_OK_id = [element for element in seznam_id if element not in Error_404]
-
-print(f"Seznam OK ID = {seznam_OK_id}")
-
-for noi in seznam_OK_id:
-    ime_datoteke = 'Anime-id{}.html'.format(noi)
-    path = os.path.join(anime_directory, ime_datoteke) 
-    vsebina = orodja.vsebina_datoteke(path)
-    for zadetek in re.finditer(test_vzorec, vsebina):
-        Animeji.append(zadetek.groupdict())
-        
-
-orodja.zapisi_json(Animeji, anime_json)
-
-
-ime_datoteke_test = 'Anime-id1.html'
-path_test = os.path.join(anime_directory, ime_datoteke_test) 
-vsebina_test = orodja.vsebina_datoteke(path_test)
-test = re.findall(test_vzorec, vsebina)
-print(test)
 
