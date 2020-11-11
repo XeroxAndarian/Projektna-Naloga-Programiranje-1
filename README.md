@@ -9,14 +9,14 @@ Analiziral bom celotno zbirko animejev na MyAnimeList (cca 12000 serij, filmov i
 [MyAnimeList](https://myanimelist.net/)
 
 Za vsak anime bom zajel:
-- naslov (ENG & JAP)
-- Tip: TV(serija) / Movie / OVA* / ONA* / Specials
+- naslov 
 - Število Episod
 - Pričetek in konec prenašanja
 - Studio
 - Vir (Manga, Original, LN, VN, ...)
 - Žanri
 - Rating 
+- Status
 - Ocena
 
 
