@@ -31,12 +31,12 @@ opomba: Če ima anime (predvsem serije) več sezon, se vsaka upošteva posebej
 opomba 2: Modra bom tekom projekta dodal kakšno vprašanje, ali pa katero od teh razširil / spremenil.
 _____________________________________________________________________________________________
 
-Podatki
+## Podatki
 
 Podatki so shranjeni v dveh datotekah: 
 anime.csv - podatki o posameznem aimeju:
 - id (dolocen s strani spletne strani)
-- naslov (Ang, ce ne obstaja, potem Jap ampak v Romanji obliki (taki, da jo znamo anglesko govoreci ljudje prebrati))
+- naslov (Ang., če ne obstaja, potem Jap. ampak v Romanji obliki (taki, da jo znamo angleško govoreči ljudje prebrati))
 - studio
 - vir
 - rating
