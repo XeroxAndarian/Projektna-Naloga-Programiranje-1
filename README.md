@@ -33,3 +33,5 @@ ________________________________________________________________________________
 
 Edit: Verjetno bom še povečal vzorec (max id 15000 ---> 40800)
 
+Opomba: shranjenih je le prvih nekaj html datotek, saj jih je vse skupaj okrog 6000 (za časa 11.11.2020; predvideno jih bo še več, samo da jih "nakopljem")
+
