@@ -34,23 +34,22 @@ st_strani_nah = 200 # "useless"
 
 # ------------------------------------------------------------------------------------------------------------------------------
 
-A =    4700          # prejsni_konec
-B =    100            # stevilo strani na interval
-C =    15000           # skupno stevilo zeljenih strani
+A =    27800      # prejsni_konec
+B =    100           # stevilo strani na interval
+C =    43000          # skupno stevilo zeljenih strani
 
 Error_404 = []
 
 def clock_work(prejsni_konec, stevilo_strani, cycle_count):
     '''Zazene celotno operacijo downloadanja, pri tem opisuje napredek in med prenasanjem pazi na pavze, da se izmuzne varnostnemu sistemu spletne strani, ki zeli preverjati ali je uporabnik clovek. '''
     print("Starting in 90s. Settings: Start at ID: {}, number of cycles: {}, downloads per cycle: {}".format(prejsni_konec, cycle_count, stevilo_strani))
-    time.sleep(30)
-    print("Estimated time untill the end of all cycles .... approx. {}s  = approx. {} at {}".format(cycle_count * 333 + 60, time.strftime("%H:%M:%S", time.gmtime(cycle_count * 333 + 60)), datetime.datetime.now() + datetime.timedelta(seconds = cycle_count * 333 + 60))) 
-    time.sleep(30)
+    print("Estimated time untill the end of all cycles .... approx. {}s  at {}".format(cycle_count * 360 + 60 + cycle_count * B * 0.65, datetime.datetime.now() + datetime.timedelta(seconds = cycle_count * 360 + 60 + cycle_count * B * 0.65))) 
+    time.sleep(60)
     print("Starting cylcle 1/{} in 30s. Starting at ID: {}, downloading {} per cycle.".format(cycle_count, prejsni_konec, stevilo_strani))
     time.sleep(20)
     print(f"Starting cylcle 1/{cycle_count} in 10s.")
     time.sleep(5)
-    print("Firs cycle begins in 5s...")
+    print("First cycle begins in 5s...")
     time.sleep(1)
     print("4...")
     time.sleep(1)
@@ -60,16 +59,16 @@ def clock_work(prejsni_konec, stevilo_strani, cycle_count):
     time.sleep(1)
     print("1...")
     time.sleep(1)
-    print("First cycle begins! Estimated finish time: {}".format(datetime.datetime.now() + datetime.timedelta(seconds = cycle_count * 333 + 60)))
+    print("First cycle begins! Estimated finish time: {}".format(datetime.datetime.now() + datetime.timedelta(seconds = cycle_count * B * 0.65)))
     novi_konec = prejsni_konec
-    for i in range(cycle_count):
+    for i in range(cycle_count + 1):
         interval = random.randint(300, 360)
         download_anime_and_filter_404(stevilo_strani, novi_konec)
         novi_konec += stevilo_strani
         i += 1
         if i < cycle_count:
             print("Finished cycle [{}/{}] at {}....    Taking a break for {}s...".format(i, cycle_count , datetime.datetime.now(), interval))
-            print("Time untill the end of all cycles .... approx. {}s    =   approx. {}.".format((cycle_count - i) * random.randint(300, 360), time.strftime("%H:%M:%S", time.gmtime((cycle_count - i) * random.randint(300, 360)))))
+            print("Time untill the end of all cycles .... approx. {}s    at  {} ".format((cycle_count - i) * interval + (cycle_count - i) * B * 0.65, datetime.datetime.now() + datetime.timedelta(seconds = (cycle_count - i) * 360  + (cycle_count - i) * B * 0.65)))
             time.sleep(interval - 60)
             print("Next cycle begins in 60s...")
             time.sleep(30)
@@ -87,10 +86,10 @@ def clock_work(prejsni_konec, stevilo_strani, cycle_count):
             time.sleep(1)
             print("1...")
             time.sleep(1)
-            print("Next cycle begins!")
+            print("Next cycle begins! Estimated finish time: {}".format(datetime.datetime.now() + datetime.timedelta(seconds = cycle_count * B * 0.65)))
         else:
             print("All cycles completed at {}! {} files downloaded! Last ID: {}  ^_^ ".format(datetime.datetime.now() , stevilo_strani * cycle_count, novi_konec))
-    return None
+    return novi_konec
 
 
 
