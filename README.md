@@ -1,5 +1,5 @@
 # Projektna-Naloga-Programiranje-1
-Repository za projektno nalogoe iz predmeta programiranje 1
+Repository za projektno nalogo iz predmeta programiranje 1
 
 Animeji
 ==================
