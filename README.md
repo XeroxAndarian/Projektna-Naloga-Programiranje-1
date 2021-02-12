@@ -1,5 +1,5 @@
 # Projektna-Naloga-Programiranje-1
-Repository za projektno nalogog iz predmeta programiranje 1
+Repository za projektno nalogoe iz predmeta programiranje 1
 
 Animeji
 ==================
@@ -26,6 +26,8 @@ Vprašanja, ki bi jih raziskoval:
 - Ali kakšen izmed žanrov prevladuje pri bolje ocenjenih animejih?
 - Ali so ocene odvsine od vira?
 
+Ugotovitev: Na oceno vpliva vglavnem samo izgled in zgodba
+
 opomba: Če ima anime (predvsem serije) več sezon, se vsaka upošteva posebej 
 
 opomba 2: Modra bom tekom projekta dodal kakšno vprašanje, ali pa katero od teh razširil / spremenil.
@@ -49,7 +51,7 @@ zaporedje: name,id,episodes,aired,studio,source,rating,score,leto,status,season
 
 zanri.csv - zanri, ki pripada dolocenemu animeju z id
 
-Edit: Verjetno bom še povečal vzorec (max id 15000 ---> 41800)
+Edit: Verjetno bom še povečal vzorec (max id 15000 ---> 41800) -> skupaj nanese to ves "uporaben" anime database, ki ga premore MAL.
 
 Opomba: shranjenih je le prvih nekaj html datotek, saj jih je vse skupaj okrog 6000 (za časa 11.11.2020; predvideno jih bo še več, samo da jih "nakopljem")
 Anime1.json in anime1.csv sta pomanjsani verziji originalnih datotek (vzorec = 50), ki ga zna git celo prikazati (ne v raw obliki).
