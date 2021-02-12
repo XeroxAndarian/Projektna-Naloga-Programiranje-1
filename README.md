@@ -55,3 +55,8 @@ Vzorec: 41800 -> skupaj nanese to ves "uporaben" anime database, ki ga premore M
 
 Opomba: html-jev ni shranjenih, saj ji je skupaj 40000 in zasedejo preveč prostora.
 
+
+## Navodila za uporabo
+Zaženite `Shranjevalink.py`. Vodil vas bo skozi konzolo, vzemite si čas, prenašal bo podatke kar nekaj časa. Shranil jih bo v `Anime` mapo.
+Ko boste vse podatke prenesli, Zaženite `zajem in obdelava strani.py`. ta bo usstvaril `anime.csv` in `Anime.json`.
+Za ponovno analizo, odprite `analiza.ipynb` in reanalizirajte podatke.
