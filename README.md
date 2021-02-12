@@ -29,8 +29,6 @@ Vprašanja, ki bi jih raziskoval:
 Ugotovitev: Na oceno vpliva vglavnem samo izgled in zgodba
 
 opomba: Če ima anime (predvsem serije) več sezon, se vsaka upošteva posebej 
-
-opomba 2: Modra bom tekom projekta dodal kakšno vprašanje, ali pa katero od teh razširil / spremenil.
 _____________________________________________________________________________________________
 
 ## Podatki
@@ -53,5 +51,10 @@ zanri.csv - zanri, ki pripada dolocenemu animeju z id
 
 Vzorec: 41800 -> skupaj nanese to ves "uporaben" anime database, ki ga premore MAL. (cca 17 000 animejev)
 
-Opomba: html-jev ni shranjenih, saj ji je skupaj 40000 in zasedejo preveč prostora.
+Opomba: html-jev ni shranjenih, saj ji je skupaj 40000 in zasedejo preveč prostora. Le eden je dodan, kot primer in kot primer, kako zgleda in kje je shranjen.
 
+
+## Navodila za uporabo
+Zaženite `Shranjevalink.py`. Vodil vas bo skozi konzolo, vzemite si čas, prenašal bo podatke kar nekaj časa. Shranil jih bo v `Anime` mapo.
+Ko boste vse podatke prenesli, Zaženite `zajem in obdelava strani.py`. ta bo ustvaril `anime.csv` in `Anime.json`.
+Za ponovno analizo, odprite `analiza.ipynb` in reanalizirajte podatke.
